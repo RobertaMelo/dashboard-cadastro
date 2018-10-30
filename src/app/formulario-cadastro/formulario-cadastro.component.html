@@ -1,0 +1,119 @@
+<app-template namePage="Cadastro" imgIcon="cadastro"></app-template>
+<div class="card card-align">
+    <form [formGroup]="form" (ngSubmit)="save()">
+        <div class="card-header">
+            <h3 class="text-center">Informações Cadastrais</h3>
+        </div>
+        <div class="card-body">
+            <div class="alert alert-{{messageType}}" *ngIf="isShowMessage" role="alert">
+                {{message}}
+            </div>
+            <div class="form-group row">
+                <div class="col-6">
+                    <label for="email">Email*</label>
+                    <input type="email" class="form-control" id="email" formControlName="email" aria-describedby="emailHelp">
+                    <p class="alerts" *ngIf="isFieldInvalid('email')">Informe seu email.</p>
+                </div>
+                <div class="col-3">
+                    <label for="password">Senha*</label>
+                    <input type="password" class="form-control" id="password" formControlName="password" required>
+                    <p class="alerts" *ngIf="isFieldInvalid('password')">Você deve informar uma senha.</p>
+                </div>
+                <div class="col-3">
+                    <label for="passwordConfirmation">Repita Senha*</label>
+                    <input type="password" class="form-control" id="passwordConfirmation" formControlName="passwordConfirmation" required>
+                    <p class="alerts" *ngIf="isFieldInvalid('passwordConfirmation')">Você deve repetir a senha.</p>
+                    <p class="alerts" *ngIf="!isPasswordEquals() && form.controls.passwordConfirmation.value != '' && !isFieldInvalid('passwordConfirmation')">Senhas não conferem.</p> 
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-8">
+                    <label for="fullName">Nome Completo*</label>
+                    <input type="text" class="form-control" id="fullName" formControlName="fullName" required>
+                    <p class="alerts" *ngIf="isFieldInvalid('fullName')">Informe seu nome completo.</p>
+                </div>
+                <div class="col-4">
+                    <label for="birthDate">Data de Nascimento*</label>
+                    <input type="date" class="form-control" id="birthDate" formControlName="birthDate" required>
+                    <p class="alerts" *ngIf="isFieldInvalid('birthDate')">Informe sua data de nascimento.</p>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label for="streetName">Rua*</label>
+                    <input type="text" class="form-control" id="streetName" formControlName="streetName" required>
+                    <p class="alerts" *ngIf="isFieldInvalid('streetName')">Informe o nome da rua.</p>
+                </div>
+                <div class="col-4">
+                    <label for="neighbourhood">Bairro*</label>
+                    <input type="text" class="form-control" id="neighbourhood" formControlName="neighbourhood" required>
+                    <p class="alerts" *ngIf="isFieldInvalid('neighbourhood')">Informe o bairro.</p>
+                </div>
+                <div class="col-2">
+                    <label for="number">Número*</label>
+                    <input type="text" class="form-control" id="number" formControlName="number" required>
+                    <p class="alerts" *ngIf="isFieldInvalid('number')">Informe o número.</p>
+                </div>
+                <div class="col-2">
+                    <label for="zipCode">CEP*</label>
+                    <input type="text" class="form-control" id="zipCode" mask="00000-000" formControlName="zipCode" required>
+                    <p class="alerts" *ngIf="isFieldInvalid('zipCode')">Informe o CEP.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <label for="complement">Complemento</label>
+                    <input type="text" class="form-control" id="complement" formControlName="complement">
+                </div>
+                <div class="col-3">
+                    <label for="city">Cidade*</label>
+                    <input type="text" class="form-control" id="city" formControlName="city" required>
+                    <p class="alerts" *ngIf="isFieldInvalid('city')">Informe a cidade.</p>
+                </div>
+                <div class="col-3">
+                    <label for="state">Estado*</label>
+                    <input type="text" class="form-control" id="state" formControlName="state" required>
+                    <p class="alerts" *ngIf="isFieldInvalid('state')">Informe o estado.</p>
+                </div>
+                <div class="col-2">
+                    <label for="country">País</label>
+                    <select class="custom-select" id="country" formControlName="country">
+                        <option value="AR">Argentina</option>
+                        <option value="BR">Brasil</option>
+                        <option value="CL">Chile</option>
+                        <option value="CO">Colômbia</option>
+                        <option value="CR">Costa Rica</option>
+                        <option value="CU">Cuba</option>
+                        <option value="DO">República Dominicana</option>
+                        <option value="EC">Equador</option>
+                        <option value="FR">França</option>
+                        <option value="GF">Guiana Francesa</option>
+                        <option value="GT">Guatemala</option>
+                        <option value="HN">Honduras</option>
+                        <option value="HT">Haiti</option>
+                        <option value="IT">Itália</option>
+                        <option value="JM">Jamaica</option>
+                        <option value="MX">México</option>
+                        <option value="NI">Nicarágua</option>
+                        <option value="PA">Panamá</option>
+                        <option value="PE">Peru</option>
+                        <option value="PR">Porto Rico</option>
+                        <option value="PY">Paraguai</option>
+                        <option value="SV">El Salvador</option>
+                        <option value="US">Estados Unidos</option>
+                        <option value="UY">Uruguai</option>
+                        <option value="VE">Venezuela</option>
+                    </select> 
+                    <p class="alerts" *ngIf="isFieldInvalid('country')">Informe o país.</p> 
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="row">
+                <div class="col-2 offset-10">
+                    <button type="submit" id="submit" class="btn btn-primary btn-block">Enviar</button> 
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

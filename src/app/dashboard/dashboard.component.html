@@ -1,0 +1,68 @@
+<app-template namePage="Dashboard" imgIcon="dashboard"></app-template>
+<div class="card card-align">
+    <h1 class="text-center">Estatísticas</h1>
+    <div class="row button">
+        <div class="col-3 offset-9">
+            <button type="submit" id="tableMode" class="btn btn-primary btn-block" (click)="alterModeShow()">{{nameMode}}</button> 
+        </div>
+    </div>
+    <hr>
+    <div class="row col-12"  [hidden]="modeTable">
+     <div id="chartContainerBrowser" style="height: 370px; width: 100%;"></div>
+    </div>
+    <hr *ngIf="!modeTable">
+    <div class="row col-12" [hidden]="modeTable">
+        <div id="chartContainerTemperature" style="height: 370px; width: 100%;"></div>
+    </div>
+    <hr *ngIf="!modeTable">
+    <div class="table-responsive"  *ngIf="modeTable">
+        <h2 class="text-table">Distribuição de Acessos por Browser</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                <th scope="col">Browser</th>
+                <th scope="col">Distribuição (%)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let hit of hits">
+                <td>{{hit.browser}}</td>
+                <td>{{hit.percentAcess}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="table-responsive"  *ngIf="modeTable">
+        <h2 class="text-table">Temperatua média por mês</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                <th scope="col">Cidade</th>
+                <th scope="col">Jan</th>
+                <th scope="col">Fev</th>
+                <th scope="col">Mar</th>
+                <th scope="col">Abr</th>
+                <th scope="col">Mai</th>
+                <th scope="col">Jun</th>
+                <th scope="col">Jul</th>
+                <th scope="col">Ago</th>
+                <th scope="col">Set</th>
+                <th scope="col">Out</th>
+                <th scope="col">Nov</th>
+                <th scope="col">Dez</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let city of citys">
+                <td>{{city.name}}</td>
+                <td *ngFor="let temperatureMonth of city.dataMonth">
+					{{temperatureMonth.temperatureAverage}}
+				</td>
+                </tr>
+            </tbody>
+         </table>
+    </div>
+
+</div>
+

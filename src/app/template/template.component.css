@@ -1,0 +1,8 @@
+.nav-color {
+    background-image: linear-gradient(to right top, #ede2f9, #e2e4ff, #d4e6ff, #c5e9ff, #b7ecff);
+}
+
+.text-dash {
+    font-size: 30px;
+    color: rgb(33, 51, 109);
+}
